@@ -14,18 +14,20 @@ impl KupynaH {
     pub fn new(hash_size: usize) -> Self {
         let mut state_size: usize = 0;
         let mut rounds: usize = 0;
+        let mut state_matrix_rows = 0;
 
         if hash_size >= 8 && hash_size <= 256 {
             state_size = 512;
             rounds = 10;
+            state_matrix_rows = 8;
+
         } else if hash_size > 256 && hash_size <= 512 {
             state_size = 1024;
             rounds = 14;
+            state_matrix_rows = 16;
         }
 
         let state_matrix_cols = 8;
-        let state_matrix_rows = 16;
-
 
 
         KupynaH {
